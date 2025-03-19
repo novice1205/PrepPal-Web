@@ -7,7 +7,7 @@ export const generateFlashcardsFromHuggingFace = async (topic: string): Promise<
       {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${HUGGINGFACE_API_KEY}`,
+          "Authorization": `Bearer ${import.meta.env.HUGGING_FACE}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
