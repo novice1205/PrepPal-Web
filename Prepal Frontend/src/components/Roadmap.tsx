@@ -1,12 +1,17 @@
-"use client"
+"use client";
 
-import { useState } from "react";
-import ReactFlow, { Handle, Position } from "reactflow";
+import { useState, ChangeEvent } from "react";
+import ReactFlow, { Handle, Position, Node, Edge } from "reactflow";
 import "reactflow/dist/style.css";
 import Input from "./Input";
 import Button from "./Button";
 
-const topics = {
+// Define type for topics
+type TopicsType = {
+  [key: string]: string[];
+};
+
+const topics: TopicsType = {
   python: [
     "Python Basics",
     "Data Structures",
@@ -45,31 +50,45 @@ const topics = {
   ],
 };
 
-const RoadmapNode = ({ data }) => (
-  <div className="p-4 rounded shadow-lg text-black text-center">
+// Define type for node data
+interface RoadmapNodeData {
+  label: string;
+}
+
+interface RoadmapNodeProps {
+  data: RoadmapNodeData;
+}
+
+const RoadmapNode: React.FC<RoadmapNodeProps> = ({ data }) => (
+  <div className="p-4 rounded shadow-lg text-black text-center bg-gray-100">
     <Handle type="target" position={Position.Top} className="bg-black" />
     {data.label}
     <Handle type="source" position={Position.Bottom} className="bg-black" />
   </div>
 );
 
-const Roadmap = () => {
-  const [topic, setTopic] = useState("");
-  const [nodes, setNodes] = useState([]);
-  const [edges, setEdges] = useState([]);
+const Roadmap: React.FC = () => {
+  const [topic, setTopic] = useState<string>("");
+  const [nodes, setNodes] = useState<Node[]>([]);
+  const [edges, setEdges] = useState<Edge[]>([]);
 
   const generateRoadmap = () => {
-    if (!topics[topic.toLowerCase()]) return;
+    const lowerCaseTopic = topic.toLowerCase();
 
-    const roadmapItems = topics[topic.toLowerCase()];
-    const generatedNodes = roadmapItems.map((item, index) => ({
+    if (!topics[lowerCaseTopic]) return;
+
+    const roadmapItems = topics[lowerCaseTopic];
+
+    // Generate nodes
+    const generatedNodes: Node[] = roadmapItems.map((item, index) => ({
       id: `${index}`,
       position: { x: 200, y: index * 100 },
       data: { label: item },
       type: "customNode",
     }));
 
-    const generatedEdges = roadmapItems.slice(1).map((_, index) => ({
+    // Generate edges
+    const generatedEdges: Edge[] = roadmapItems.slice(1).map((_, index) => ({
       id: `e${index}-${index + 1}`,
       source: `${index}`,
       target: `${index + 1}`,
@@ -83,15 +102,20 @@ const Roadmap = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-      <h2 className="text-3xl font-bold mb-6 text-black text-center">Generate Your Learning Roadmap</h2>
+      <h2 className="text-3xl font-bold mb-6 text-black text-center">
+        Generate Your Learning Roadmap
+      </h2>
       <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
         <Input
           value={topic}
-          onChange={(e) => setTopic(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setTopic(e.target.value)}
           placeholder="Enter topic (e.g., Python, Web Development)"
           className="border-2 border-black p-2 w-full sm:w-auto"
         />
-        <Button onClick={generateRoadmap} className="bg-black text-white px-4 py-2">
+        <Button
+          onClick={generateRoadmap}
+          className="bg-black text-white px-4 py-2"
+        >
           Generate
         </Button>
       </div>
