@@ -1,5 +1,3 @@
- // Replace with actual key
-
 export const generateFlashcardsFromHuggingFace = async (topic: string): Promise<string[]> => {
   try {
     const response = await fetch(
@@ -41,4 +39,3 @@ export const generateFlashcardsFromHuggingFace = async (topic: string): Promise<
     return ["Error generating flashcards."];
   }
 };
-7
