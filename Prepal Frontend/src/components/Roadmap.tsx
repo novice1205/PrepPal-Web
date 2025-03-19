@@ -111,6 +111,7 @@ const Roadmap: React.FC = () => {
           onChange={(e: ChangeEvent<HTMLInputElement>) => setTopic(e.target.value)}
           placeholder="Enter topic (e.g., Python, Web Development)"
           className="border-2 border-black p-2 w-full sm:w-auto"
+          label="input topic"
         />
         <Button
           onClick={generateRoadmap}
