@@ -1,3 +1,5 @@
+const HUGGINGFACE_API_KEY = process.env.HUGGING_FACE_API_KEY; // Replace with actual key
+
 export const generateFlashcardsFromHuggingFace = async (topic: string): Promise<string[]> => {
   try {
     const response = await fetch(
@@ -5,7 +7,7 @@ export const generateFlashcardsFromHuggingFace = async (topic: string): Promise<
       {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${import.meta.env.HUGGING_FACE}`,
+          "Authorization": `Bearer ${HUGGINGFACE_API_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -39,3 +41,4 @@ export const generateFlashcardsFromHuggingFace = async (topic: string): Promise<
     return ["Error generating flashcards."];
   }
 };
+7
