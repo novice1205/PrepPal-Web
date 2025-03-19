@@ -7,7 +7,7 @@ const Layout: React.FC = () => {
     <div className="min-h-screen bg-gray-100">
       <header className="bg-white shadow-sm">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">PrePal AI</h1>
+          <h1 className="text-2xl font-bold">PrepPal AI</h1>
           <div className="flex space-x-4">
             <Link to="/dashboard" className="font-medium hover:underline">
               Dashboard

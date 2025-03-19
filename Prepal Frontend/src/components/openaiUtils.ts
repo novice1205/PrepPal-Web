@@ -1,4 +1,4 @@
-const HUGGINGFACE_API_KEY = "my_api_key"; // Replace with actual key
+const HUGGINGFACE_API_KEY = "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"; // Replace with actual key
 
 export const generateFlashcardsFromHuggingFace = async (topic: string): Promise<string[]> => {
   try {

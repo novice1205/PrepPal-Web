@@ -24,7 +24,7 @@ const LandingPage: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            PrePal AI
+            PrepPal AI
           </motion.h1>
           <div>
             <Link to="/login">

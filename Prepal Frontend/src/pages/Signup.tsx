@@ -18,7 +18,7 @@ const Signup: React.FC = () => {
     const toastId = toast.loading("Processing registration...");
 
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/signup", {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signup`, {
         email,
         name,
         password,
@@ -56,7 +56,7 @@ const Signup: React.FC = () => {
         <h1 className="text-3xl md:text-5xl font-bold text-white">
           Study Start Now
         </h1>
-        <p className="text-gray-400 text-lg">Create your PrePal AI account.</p>
+        <p className="text-gray-400 text-lg">Create your PrepPal AI account.</p>
       </div>
 
       {/* Right section - Signup Form */}
