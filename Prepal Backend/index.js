@@ -11,7 +11,7 @@ const app = express();
 
 // CORS Configuration
 const corsOptions = {
-  origin: 'http://localhost:5173', // Allow only your React app to make requests
+  origin: 'https://preppalai-ten.vercel.app/', // Allow only your React app to make requests
   credentials: true, // Allow cookies to be sent across origins if needed
   optionsSuccessStatus: 200 // Handle legacy browsers
 };
