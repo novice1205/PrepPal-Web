@@ -16,7 +16,7 @@ const Login: React.FC = () => {
     const toastId = toast.loading("Logging in...");
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}api/auth/login`, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, {
         email,
         password,
       });
