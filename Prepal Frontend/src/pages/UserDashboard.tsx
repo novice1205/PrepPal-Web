@@ -16,7 +16,7 @@ const data = [
 ];
 
 const UserDashboard: React.FC = () => {
-  const [streak, setStreak] = useState(5);
+  const [streak, _setStreak] = useState(5);
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
